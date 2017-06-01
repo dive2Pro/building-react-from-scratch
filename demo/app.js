@@ -5,9 +5,9 @@ const Dilithium = require('../dilithium');
 class CounterButton extends Dilithium.Component {
   constructor(props) {
     super(props);
-    this.state = {count: 0};
+    this.state = { count: 0 };
     setInterval(() => {
-      this.setState({count: this.state.count + 1});
+      this.setState({ count: this.state.count + 1 });
     });
   }
 
@@ -39,7 +39,9 @@ class ColorSwatch extends Dilithium.Component {
 
 window.addEventListener('click', () => {
   Dilithium.render(
-    <CounterButton title="Hello React Rally!" />,
+    <CounterButton title="Hello React Rally!">
+      lalalalalalal{' '}
+    </CounterButton>,
     document.getElementById('container'),
   );
 });

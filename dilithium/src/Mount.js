@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-const Element = require("./Element");
-const assert = require("./assert");
-const DOM = require("./DOM");
-const shouldUpdateComponent = require("./shouldUpdateComponent");
-const instantiateComponent = require("./instantiateComponent");
-const Reconciler = require("./Reconciler");
+const Element = require('./Element');
+const assert = require('./assert');
+const DOM = require('./DOM');
+const shouldUpdateComponent = require('./shouldUpdateComponent');
+const instantiateComponent = require('./instantiateComponent');
+const Reconciler = require('./Reconciler');
 
-const ROOT_KEY = "dlthmRootId";
+const ROOT_KEY = 'dlthmRootId';
 let rootID = 1;
 
 // Used to track root instances.
@@ -22,13 +22,23 @@ function isRoot(node) {
 
 /**
  * todo 这里的element是什么?
+ *   是 通过 babel插件转化后的js对象:
+ *                {
+ *            type:...
+ *           props:...
+ *            }
  * 这里使用了 virtual dom?
+ * 应该不算把,这里只是单纯的对象. 当然react中的实现和这里应该不一样.
+ *
  *                    webpack中
  *                   `'transform-react-jsx', {pragma: 'Dilithium.createElement'}`
  *                    这里的 pragma 意味着什么?
- *  如果是Element中的方法,那么这个和默认的有什么区别?
+ *                    意味着
+ *                          transform-react-jsx 调用的方法, 缺省值是 'React.createElement'
  *
- * @param element
+ *  如果是Element中的方法,那么这个和默认的有什么区别?
+ *   区别在于返回的对象是否符合框架的要求. 
+ * @param element  
  * @param node
  */
 function render(element, node) {
@@ -49,7 +59,7 @@ function render(element, node) {
 
 function mount(element, node) {
   // Mark this node as a root.
-  // 标记这个node为根
+  // 标记这个node为根  1
   node.dataset[ROOT_KEY] = rootID;
 
   // Create the internal instance. We're assuming for now that we only have
@@ -118,5 +128,5 @@ function unmountComponentAtNode(node) {
 
 module.exports = {
   render,
-  unmountComponentAtNode
+  unmountComponentAtNode,
 };
