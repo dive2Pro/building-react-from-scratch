@@ -36,6 +36,7 @@ class Component {
     // This is where the magic starts to happen. We call the render method to
     // get our actual rendered element. Note: since we (and React) don't support
     // Arrays or other types, we can safely assume we have an element.
+    // 这里要注意的是  render 方法中的组件已经被转化为 {props,type}这样的形式了
     let renderedElement = this.render();
 
     // TODO: lifecycle methods: compnentWillMount
@@ -46,7 +47,10 @@ class Component {
     this._renderedComponent = renderedComponent;
 
     // Generate markup for the child & effectively recurse!
+    // 通过递归生成子组件
     // Since CompositeComponents instances don't have a DOM representation of
+
+    // 所以子组件的初始化在父组件 componentWillMount 方法之后
     // their own, this markup will actually be the DOM nodes (or Native Views)
     let markup = Reconciler.mountComponent(renderedComponent);
 
@@ -82,6 +86,7 @@ class Component {
     // React has a wrapper instance, which complicates the logic. We'll do
     // something simplified here.
     let prevRenderedElement = this._renderedComponent._currentElement;
+    // 重新执行 render , 如果state有作为props传递给其他组件,那么它就会得到在这里新的props
     let nextRenderedElement = this.render();
 
     // We check if we're going to update the existing rendered element or if

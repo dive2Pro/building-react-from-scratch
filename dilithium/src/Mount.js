@@ -73,13 +73,13 @@ function mount(element, node) {
   // This will return a DOM node. React does more work here to determine if we're remounting
   // 这会返回一个DOM Node. React 在这里做了很多的工作去确定 当我们 remounting 服务端的内容时
   // server-rendered content.
-  //
+  // 这里会生成真实的DOM组件,等待插入真实的DOM中
   let renderedNode = Reconciler.mountComponent(component, node);
 
   // Empty out `node` so we can put it under our control.
-  // 置空 `node` , 使其更容易控制
+  // 置空 真实的DOM `node` , 使其更容易控制
   DOM.empty(node);
-  //
+  // 插入到真实的组件中
   DOM.appendChild(node, renderedNode);
 
   // Incrememnt rootID so we can track appropriately.

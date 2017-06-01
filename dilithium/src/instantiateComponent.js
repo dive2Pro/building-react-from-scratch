@@ -11,11 +11,16 @@ function instantiateComponent(element) {
 
   let wrapperInstance;
   if (typeof type === 'string') {
+    /**
+     * 形如 <div>Hello World!</div>这样的对象,transform之后的element
+     */
     wrapperInstance = HostComponent.construct(element);
   } else if (typeof type === 'function') {
+    // 这里是一个继承了 Component的类, 所以直接实例化 constructor
     wrapperInstance = new element.type(element.props);
     wrapperInstance._construct(element);
   } else if (typeof element === 'string' || typeof element === 'number') {
+    // 字符串
     wrapperInstance = HostComponent.constructTextComponent(element);
   }
 

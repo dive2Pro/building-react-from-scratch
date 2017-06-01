@@ -19,6 +19,7 @@ function constructTextComponent(element) {
     },
   });
 }
+// 这里的实现是 DOMComponentWrapper
 
 function inject(impl) {
   implementation = impl;

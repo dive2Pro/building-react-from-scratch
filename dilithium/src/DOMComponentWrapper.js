@@ -50,10 +50,7 @@ class DOMComponentWrapper extends MultiChild {
 
   _createInitialDOMChildren(props) {
     // Text content
-    if (
-      typeof props.children === 'string' ||
-      typeof props.children === 'number'
-    ) {
+    if (typeof props.children === 'string' || typeof props.children === 'number') {
       // TODO: validate element type can have text children
       // TODO: wrap with helper, there are browser inconsistencies
       this._domNode.textContent = props.children;
@@ -97,6 +94,7 @@ class DOMComponentWrapper extends MultiChild {
       }
 
       // Unset all previous styles since we know there are no new ones.
+      // 当有新的style传入的时候, 移除之前的style
       if (prop === 'style') {
         Object.keys(prevProps[prop]).forEach(style => {
           styleUpdates[style] = '';
