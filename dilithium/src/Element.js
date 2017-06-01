@@ -17,10 +17,11 @@ function createElement(type, config, children) {
   // - keys
   // - refs
   // - defaultProps (usually set here)
-
+  console.log(type, config, children);
+  debugger
   return {
     type,
-    props,
+    props
   };
 }
 
@@ -37,5 +38,5 @@ function isValidElement(element) {
 
 module.exports = {
   createElement,
-  isValidElement,
+  isValidElement
 };
