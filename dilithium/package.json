@@ -15,5 +15,8 @@
     "plugins": [
       "transform-class-properties"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-transform-react-jsx": "^6.24.1"
   }
 }
