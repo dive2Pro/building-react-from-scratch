@@ -184,9 +184,9 @@ class MultiChild {
         ),
       );
     });
-
+  // 操作_domNode,使其更新
     processQueue(this._domNode, updates);
-
+  // 记录更新的Children
     this._renderedChildren = nextRenderedChildren;
   }
 }
